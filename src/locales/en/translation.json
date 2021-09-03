@@ -1,0 +1,171 @@
+{
+    "login": {
+        "label": {
+            "signIn": "Sign in to start your session",
+            "rememberMe": "Remember Me",
+            "forgotPass": "I forgot my password",
+            "registerNew": "Register a new membership"
+        },
+        "button": {
+            "signIn": {
+                "label": "Sign In",
+                "social": "Sign in using {{what}}"
+            },
+            "signOut": "Sign Out"
+        }
+    },
+    "register": {
+        "alreadyHave": "I already have a membership",
+        "registerNew": "Register a new membership",
+        "label": "Register"
+    },
+    "recover": {
+        "forgotYourPassword": " Here you can easily retrieve a new password based on previous password",
+        "oneStepAway": "You are only one step a way from your new password, recover your password now.",
+        "changePassword": "Change Password",
+        "requestNewPassword": "Change Password"
+    },
+    "product": {
+        "addProduct": "Add Prdouct"
+    },
+    "slider": {
+        "addImage": "Add Slider"
+    },
+    "add": {
+        "addImage": "Add Advertisement"
+    },
+    "category": {
+        "addCategory": "Add Category"
+    },
+    "main": {
+        "label": {
+            "moreInfo": "More info",
+            "follow": "Follow",
+            "aboutMe": "About Me",
+            "education": "Education",
+            "location": "Location",
+            "skills": "Skills",
+            "notes": "Notes",
+            "activity": "Activity",
+            "timeline": "Timeline",
+            "settings": "Settings"
+        }
+    },
+    "header": {
+        "label": {
+            "home": "Home",
+            "contact": "Contact",
+            "products": "Products",
+            "plans": "Plans",
+            "payments": "Payments",
+            "notifications": "Notifications",
+            "slider": "Slider",
+            "adds": "advertisement",
+            "admin": "Admins"
+        },
+        "language": {
+            "turkish": "Turkish",
+            "english": "English",
+            "german": "German",
+            "french": "French",
+            "spanish": "Spanish"
+        },
+        "messages": {
+            "ago": "{{quantity}} {{unit}} Ago",
+            "seeAll": "See All Messages"
+        },
+        "notifications": {
+            "count": "{{quantity}} Notifications",
+            "newMessagesCount": "{{quantity}} new messages",
+            "friendRequestsCount": "{{quantity}} friend requests",
+            "reportsCount": "{{quantity}} new reports",
+            "seeAll": "See All Notifications",
+            "title": "Notifications"
+        },
+        "user": {
+            "changePassword": "Change Password",
+            "profile": "Profile",
+            "followers": "Followers",
+            "sales": "Sales",
+            "friends": "Friends",
+            "title": "Users",
+            "notifications": "Notifications",
+            "products": "Products",
+            "home": "Home"
+        },
+        "products": {
+            "title": "List of Products"
+        },
+        "plans": {
+            "title": "Plans"
+        },
+        "payments": {
+            "title": "Payments"
+        },
+        "slider": {
+            "title": "Slider"
+        },
+        "Adds": {
+            "title": "Advertisements"
+        },
+        "admin": {
+            "title": "Admins"
+        },
+        "category": {
+            "title": "Categories"
+        }
+    },
+    "menusidebar": {
+        "label": {
+            "dashboard": "Dashboard",
+            "profile": "Profile",
+            "user": "User",
+            "products": "Products",
+            "plans": "Plans",
+            "payments": "Payments",
+            "notifications": "Notifications",
+            "slider": "Slider",
+            "Adds": "Advertisement",
+            "admin": "Admins",
+            "category": "Categories"
+        }
+    },
+    "footer": {
+        "version": "With ",
+        "copyright": "All rights reserved."
+    },
+    "views": {
+        "user": {
+            "profile": "User Profile",
+            "following": "Following",
+            "link": "all users"
+        },
+        "admin": {
+            "link": "list of admins"
+        },
+        "products": {
+            "link": "all products"
+        },
+        "plans": {
+            "link": "All Plans"
+        },
+        "payments": {
+            "link": "All Payments"
+        },
+        "notifications": {
+            "link": "All Notifications"
+        },
+        "slider": {
+            "link": "Slider Images"
+        },
+        "Adds": {
+            "link": "Adds "
+        },
+        "category": {
+            "link": "Categories"
+        }
+    },
+    "measurement": {
+        "quantityUnit": "{{quantity}} {{unit}}"
+    }
+}
