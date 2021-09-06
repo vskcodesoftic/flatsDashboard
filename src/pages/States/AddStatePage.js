@@ -6,6 +6,8 @@ import {useTranslation} from 'react-i18next';
 import {toast} from 'react-toastify';
 import axios from 'axios';
 import Input from '@app/../node_modules/reactstrap/es/Input';
+import Loader from 'react-js-loader';
+import {Redirect} from 'react-router-dom';
 
 export const GetCurrentUser = () => {
     const C = JSON.parse(localStorage.getItem('user'));
@@ -21,7 +23,7 @@ const AddStatePage = (props) => {
     const [Spinner, setSpinner] = useState(false);
 
     const [redirect, setredirect] = useState(false);
-    
+
     const onSubmit = (data) => {
         // still to resolve promise
 
@@ -41,6 +43,7 @@ const AddStatePage = (props) => {
             fileInput.current.files[0],
             fileInput.current.files[0].name
         );
+        setSpinner(true);
 
         axios
             .post('https://beingfame.com/api/admin/states/addState', fd)
@@ -117,6 +120,15 @@ const AddStatePage = (props) => {
                                             </div>
                                         </div>
                                     </form>
+                                    {Spinner ? (
+                                    <Loader
+                                        type="spinner-circle"
+                                        className="mt-5"
+                                        bgColor={'#000000'}
+                                        title={'...loading'}
+                                        size={50}
+                                    />
+                                ) : null}
                                 </div>
                             </div>
                         </div>
