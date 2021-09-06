@@ -357,7 +357,7 @@ const AddCitiesPage = (props) => {
         api.post('/api/admin/states/addCity', fd)
             .then((res) => {
                 console.log(res.data);
-                toast.success(`Product Added sucessfully !`);
+                toast.success(`City Added sucessfully !`);
                 setSpinner(false);
                 setredirect(true);
             })
