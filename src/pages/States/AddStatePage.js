@@ -18,6 +18,10 @@ const AddStatePage = (props) => {
     const [t] = useTranslation();
     const fileInput = React.createRef();
 
+    const [Spinner, setSpinner] = useState(false);
+
+    const [redirect, setredirect] = useState(false);
+    
     const onSubmit = (data) => {
         // still to resolve promise
 
@@ -43,13 +47,17 @@ const AddStatePage = (props) => {
             .then((res) => {
                 console.log(res.data);
                 toast.success(`State Added sucessfully !`);
+                setSpinner(false);
+                setredirect(true);
             })
             .catch((error) => {
                 console.log('Error');
                 toast.error(`something went wrong`);
             });
     };
-
+    if (redirect) {
+        return <Redirect to="/states" />;
+    }
     return (
         <>
             <section className="content-header">
