@@ -367,7 +367,7 @@ const AddCitiesPage = (props) => {
             });
     };
     if (redirect) {
-        return <Redirect to="/products" />;
+        return <Redirect to="/cities" />;
     }
     return (
         <>
