@@ -46,7 +46,7 @@ const AddFlatsPage = (props) => {
         setSpinner(true);
 
         axios
-            .post('http://localhost:5000/api/admin/addFlat', data)
+            .post('https://flatsapi.herokuapp.com/api/admin/addFlat', data)
             .then((res) => {
                 console.log(res.data);
                 toast.success(`Flat Added sucessfully !`);
@@ -132,7 +132,7 @@ const AddFlatsPage = (props) => {
                                                     }
                                                 )}
                                                 className="form-control"
-                                                placeholder="owner Contact Number"
+                                                placeholder=" Number of family members"
                                             />
                                         </div>
                                         <div className="Field-group mb-3">

@@ -5,17 +5,21 @@ import {addFacebookScript} from '../utils/social-auth-scripts';
 
 export const loginByAuth = async (email, password) => {
     return axios
-        .post('https://beingfame.com/api/admin/auth/login', {
+        .post('https://flatsapi.herokuapp.com/api/admin/login', {
             email,
             password
         })
         .then((response) => {
-            if (response.data.token) {
-                localStorage.setItem('user', JSON.stringify(response.data));
+            console.log('user data', response.data.data);
+            if (response.data.data.token) {
+                localStorage.setItem(
+                    'user',
+                    JSON.stringify(response.data.data)
+                );
             }
             document.getElementById('root').classList.remove('login-page');
             document.getElementById('root').classList.remove('hold-transition');
-            const {token} = response.data;
+            const {token} = response.data.data;
             return token;
         });
 };

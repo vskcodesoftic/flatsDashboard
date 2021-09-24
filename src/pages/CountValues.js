@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const GetStatesCount = () => {
     const api = axios.create({
-        baseURL: `https://beingfame.com/`
+        baseURL: `https://flatsapi.herokuapp.com/`
     });
 
     const [data, setData] = useState([]); // table data
@@ -30,7 +30,7 @@ export const GetStatesCount = () => {
 
 export const GetCitiesCount = () => {
     const api = axios.create({
-        baseURL: `https://beingfame.com/`
+        baseURL: `https://flatsapi.herokuapp.com/`
     });
 
     const [data, setData] = useState([]); // table data
@@ -54,10 +54,9 @@ export const GetCitiesCount = () => {
     return <>{iserror ? errorMessages : data}</>;
 };
 
-
 export const GetServicesCount = () => {
     const api = axios.create({
-        baseURL: `https://beingfame.com/`
+        baseURL: `https://flatsapi.herokuapp.com/`
     });
 
     const [data, setData] = useState([]); // table data
@@ -83,7 +82,7 @@ export const GetServicesCount = () => {
 
 export const GetServiceProviderCount = () => {
     const api = axios.create({
-        baseURL: `https://beingfame.com/`
+        baseURL: `https://flatsapi.herokuapp.com/`
     });
 
     const [data, setData] = useState([]); // table data

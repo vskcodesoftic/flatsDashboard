@@ -51,7 +51,7 @@ const tableIcons = {
 };
 
 const api = axios.create({
-    baseURL: `http://localhost:5000`
+    baseURL: `https://flatsapi.herokuapp.com`
 });
 
 const DataTable = () => {

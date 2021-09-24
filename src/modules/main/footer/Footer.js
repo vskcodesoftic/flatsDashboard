@@ -20,7 +20,7 @@ const Footer = () => {
                 <b> </b>
                 <span>
                     <i className="nav-icon fas fa-heart" />
-                    Janpad
+                    FlatsIndia
                 </span>
             </div>
             <strong>

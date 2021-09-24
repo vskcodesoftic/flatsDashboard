@@ -51,18 +51,16 @@ const tableIcons = {
 };
 
 const api = axios.create({
-    baseURL: `https://badilnyint.com`
+    baseURL: `https://flatsapi.herokuapp.com`
 });
 
-const PlansDataTable = () => {
+const DataTable = () => {
     const columns = [
         {title: 'id', field: 'id', hidden: true},
-        {title: 'visbility', field: 'visbility'},
-        {title: 'title', field: 'title'},
-        {title: 'Desc', field: 'description'},
-        {title: 'amount', field: 'amount'},
-        {title: 'type', field: 'type'},
-        {title: 'posts', field: 'posts'}
+        {title: 'Block Number', field: 'BlockNumber'},
+        {title: 'Block title', field: 'Blocktitle'},
+        {title: 'Block description', field: 'Blockdescription'},
+        {title: 'No. of Flats', field: 'TotalFlats'}
     ];
     const [data, setData] = useState([]); // table data
 
@@ -71,9 +69,9 @@ const PlansDataTable = () => {
     const [errorMessages, setErrorMessages] = useState([]);
 
     useEffect(() => {
-        api.get('/api/admin/plans/list')
+        api.get('/api/admin/getBlocks')
             .then((res) => {
-                setData(res.data.plans);
+                setData(res.data.Blocks);
             })
             .catch((error) => {
                 console.log('Error');
@@ -83,23 +81,12 @@ const PlansDataTable = () => {
     const handleRowUpdate = (newData, oldData, resolve) => {
         // validation
         const errorList = [];
-        if (newData.title === undefined) {
-            errorList.push('Please enter title');
+        if (newData.status === '') {
+            errorList.push('Please select valid status');
         }
-        if (newData.description === undefined) {
-            errorList.push('Please enter desc');
-        }
-        if (newData.amount === undefined) {
-            errorList.push('Please enter amount');
-        }
-        if (newData.type === undefined) {
-            errorList.push('Please enter type');
-        }
-        if (newData.posts === undefined) {
-            errorList.push('Please enter posts');
-        }
+
         if (errorList.length < 1) {
-            api.patch(`/api/admin/plans/u/${newData.id}`, newData)
+            api.patch(`/api/admin/users/u/${newData.id}`, newData)
                 .then((res) => {
                     const dataUpdate = [...data];
                     const index = oldData.tableData.id;
@@ -110,7 +97,6 @@ const PlansDataTable = () => {
                     setErrorMessages([]);
                 })
                 .catch((error) => {
-                    console.log(error);
                     setErrorMessages([`Update failed! Server error${error}`]);
                     setIserror(true);
                     resolve();
@@ -122,50 +108,48 @@ const PlansDataTable = () => {
         }
     };
 
-    const handleRowAdd = (newData, resolve) => {
-        // validation
-        const errorList = [];
-        if (newData.title === undefined) {
-            errorList.push('Please enter title');
-        }
-        if (newData.description === undefined) {
-            errorList.push('Please enter desc');
-        }
-        if (newData.amount === undefined) {
-            errorList.push('Please enter amount');
-        }
-        if (newData.type === undefined) {
-            errorList.push('Please enter type');
-        }
-        if (newData.posts === undefined) {
-            errorList.push('Please enter posts');
-        }
+    // const handleRowAdd = (newData, resolve) => {
+    //     // validation
+    //     const errorList = [];
+    //     if (newData.first_name === undefined) {
+    //         errorList.push('Please enter first name');
+    //     }
+    //     if (newData.last_name === undefined) {
+    //         errorList.push('Please enter last name');
+    //     }
+    //     if (
+    //         newData.email === undefined ||
+    //         validateEmail(newData.email) === false
+    //     ) {
+    //         errorList.push('Please enter a valid email');
+    //     }
 
-        if (errorList.length < 1) {
-            // no error
-            api.post('/api/admin/plans/createPlan', newData)
-                .then((res) => {
-                    const dataToAdd = [...data];
-                    dataToAdd.push(newData);
-                    setData(dataToAdd);
-                    resolve();
-                    setErrorMessages([]);
-                    setIserror(false);
-                })
-                .catch((error) => {
-                    setErrorMessages(['Cannot add data. Server error!']);
-                    setIserror(true);
-                    resolve();
-                });
-        } else {
-            setErrorMessages(errorList);
-            setIserror(true);
-            resolve();
-        }
-    };
+    //     if (errorList.length < 1) {
+    //         // no error
+    //         api.post('/users', newData)
+    //             .then((res) => {
+    //                 const dataToAdd = [...data];
+    //                 dataToAdd.push(newData);
+    //                 setData(dataToAdd);
+    //                 resolve();
+    //                 setErrorMessages([]);
+    //                 setIserror(false);
+    //             })
+    //             .catch((error) => {
+    //                 setErrorMessages(['Cannot add data. Server error!']);
+    //                 setIserror(true);
+    //                 resolve();
+    //             });
+    //     } else {
+    //         setErrorMessages(errorList);
+    //         setIserror(true);
+    //         resolve();
+    //     }
+    // };
 
     const handleRowDelete = (oldData, resolve) => {
-        api.delete(`/api/admin/plans/${oldData.id}`)
+        const pid = api
+            .delete(`/api/admin/users/${oldData.id}`)
             .then((res) => {
                 console.log(oldData.id);
                 const dataDelete = [...data];
@@ -196,32 +180,31 @@ const PlansDataTable = () => {
                         )}
                     </div>
                 </Grid>
-                <Grid item />
             </Grid>
             <div className="row">
-                <div className="col-lg-12  col-sm-12 col-md-6">
+                <div className="col-lg-12 col-12">
                     <MaterialTable
                         options={{
                             exportButton: true
                         }}
-                        title="List of Plans"
+                        title="List of Blocks"
                         columns={columns}
                         data={data}
                         icons={tableIcons}
-                        editable={{
-                            onRowUpdate: (newData, oldData) =>
-                                new Promise((resolve) => {
-                                    handleRowUpdate(newData, oldData, resolve);
-                                }),
-                            onRowAdd: (newData) =>
-                                new Promise((resolve) => {
-                                    handleRowAdd(newData, resolve);
-                                }),
-                            onRowDelete: (oldData) =>
-                                new Promise((resolve) => {
-                                    handleRowDelete(oldData, resolve);
-                                })
-                        }}
+                        // editable={{
+                        //     onRowUpdate: (newData, oldData) =>
+                        //         new Promise((resolve) => {
+                        //             handleRowUpdate(newData, oldData, resolve);
+                        //         }),
+                        //     // onRowAdd: (newData) =>
+                        //     //     new Promise((resolve) => {
+                        //     //         handleRowAdd(newData, resolve);
+                        //     //     }),
+                        //     onRowDelete: (oldData) =>
+                        //         new Promise((resolve) => {
+                        //             handleRowDelete(oldData, resolve);
+                        //         })
+                        // }}
                     />
                 </div>
             </div>
@@ -229,4 +212,4 @@ const PlansDataTable = () => {
     );
 };
 
-export default PlansDataTable;
+export default DataTable;

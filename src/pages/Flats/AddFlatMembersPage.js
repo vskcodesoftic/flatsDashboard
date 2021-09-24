@@ -29,7 +29,7 @@ const AddFlatMembersPage = (props) => {
         setSpinner(true);
 
         axios
-            .post('http://localhost:5000/api/admin/addFlat', data)
+            .post('https://flatsapi.herokuapp.com/api/admin/addFlat', data)
             .then((res) => {
                 console.log(res.data);
                 toast.success(`Flat Added sucessfully !`);

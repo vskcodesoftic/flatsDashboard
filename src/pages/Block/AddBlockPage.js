@@ -8,13 +8,14 @@ import axios from 'axios';
 import Input from '@app/../node_modules/reactstrap/es/Input';
 import Loader from 'react-js-loader';
 import {Redirect} from 'react-router-dom';
+var form = new FormData();
 
 export const GetCurrentUser = () => {
     const C = JSON.parse(localStorage.getItem('user'));
     return C;
 };
 
-const AddStatePage = (props) => {
+const AddBlockPage = (props) => {
     const {register, handleSubmit} = useForm();
     const [ImageValue, setImageValue] = useState('');
     const [t] = useTranslation();
@@ -27,39 +28,23 @@ const AddStatePage = (props) => {
     const onSubmit = (data) => {
         // still to resolve promise
 
-        console.log(
-            'onSubmitFn:',
-            data,
-            '  imageFile: ',
-            fileInput.current.files[0].name
-        );
-        const fd = new FormData();
-        for (var key in data) {
-            fd.append(key, data[key]); // formdata doesn't take objects
-        }
-
-        fd.append(
-            'image',
-            fileInput.current.files[0],
-            fileInput.current.files[0].name
-        );
         setSpinner(true);
 
         axios
-            .post('https://beingfame.com/api/admin/states/addState', fd)
+            .post('https://flatsapi.herokuapp.com/api/admin/addBlock', data)
             .then((res) => {
                 console.log(res.data);
-                toast.success(`State Added sucessfully !`);
+                toast.success(`Block Added sucessfully !`);
                 setSpinner(false);
                 setredirect(true);
             })
             .catch((error) => {
-                console.log('Error');
+                console.log('Error', error);
                 toast.error(`something went wrong`);
             });
     };
     if (redirect) {
-        return <Redirect to="/states" />;
+        return <Redirect to="/blocks" />;
     }
     return (
         <>
@@ -72,7 +57,7 @@ const AddStatePage = (props) => {
                                     <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="input-group mb-3">
                                             <input
-                                                {...register('title', {
+                                                {...register('Blocktitle', {
                                                     required: true
                                                 })}
                                                 className="form-control"
@@ -81,31 +66,32 @@ const AddStatePage = (props) => {
                                         </div>
                                         <div className="Field-group mb-3">
                                             <input
-                                                {...register('description', {
-                                                    required: true
-                                                })}
+                                                {...register(
+                                                    'Blockdescription',
+                                                    {
+                                                        required: true
+                                                    }
+                                                )}
                                                 className="form-control"
                                                 placeholder="Descreption"
                                             />
                                         </div>
                                         <div className="Field-group mb-3">
                                             <input
-                                                {...register('listOfCities', {
+                                                {...register('BlockNumber', {
                                                     required: true
                                                 })}
                                                 className="form-control"
-                                                placeholder="listOfCities"
+                                                placeholder="BlockNumber"
                                             />
                                         </div>
-
                                         <div className="Field-group mb-3">
                                             <input
-                                                required
-                                                multiple
-                                                ref={fileInput}
-                                                type="file"
+                                                {...register('TotalFlats', {
+                                                    required: true
+                                                })}
                                                 className="form-control"
-                                                placeholder="Please choose Image"
+                                                placeholder="TotalFlats"
                                             />
                                         </div>
 
@@ -115,20 +101,20 @@ const AddStatePage = (props) => {
                                                     type="submit"
                                                     className="btn btn-warning btn-block"
                                                 >
-                                                    Add State
+                                                    Add Block
                                                 </button>
                                             </div>
                                         </div>
                                     </form>
                                     {Spinner ? (
-                                    <Loader
-                                        type="spinner-circle"
-                                        className="mt-5"
-                                        bgColor={'#000000'}
-                                        title={'...loading'}
-                                        size={50}
-                                    />
-                                ) : null}
+                                        <Loader
+                                            type="spinner-circle"
+                                            className="mt-5"
+                                            bgColor={'#000000'}
+                                            title={'...loading'}
+                                            size={50}
+                                        />
+                                    ) : null}
                                 </div>
                             </div>
                         </div>
@@ -139,4 +125,4 @@ const AddStatePage = (props) => {
     );
 };
 
-export default AddStatePage;
+export default AddBlockPage;

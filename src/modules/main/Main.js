@@ -6,32 +6,20 @@ import {Gatekeeper} from 'gatekeeper-client-sdk';
 import Dashboard from '@pages/Dashboard';
 import Profile from '@pages/profile/Profile';
 
-import Users from '@app/pages/States/States';
-import ProductsPage from '@app/pages/Products/ProductsPage';
-import AdminsPage from '@app/pages/Admin/AdminPage';
-import AddSliderImage from '@app/pages/Slider/AddSliderImage';
-import Cities from '@app/pages/Cities/Cities';
-import AddCitiesPage from '@app/pages/Cities/AddCityPage';
-import AddServicePage from '@app/pages/Services/AddServicePage';
+import Users from '@app/pages/Block/Blocks';
+
+import AddFlatsPage from '@app/pages/Flats/AddFlatsPage';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import MenuSidebar from './menu-sidebar/MenuSidebar';
 import PageLoading from '../../components/page-loading/PageLoading';
 import * as ActionTypes from '../../store/actions';
-import PlansPage from '../../pages/Plans/PlansPage';
-import NotificationsPage from '../../pages/Notifications/NotificationPage';
-import PaymentsPage from '../../pages/Payments/PaymentsPage';
-import SliderPage from '../../pages/Slider/SliderPage';
-import AddsPage from '../../pages/Advertisement/AddsPage';
 import ChangePassword from '../../pages/ChangePassword/ChangePassword';
-import CategoryPage from '../../pages/Category/CategoryPage';
-import AddPrdouctPage from '../../pages/Products/AddProductPage';
-import AddAdvertisementImage from '../../pages/Advertisement/AddAdvertisementImage';
-import AddCategoryPage from '../../pages/Category/AddCategoryPage';
-import AddStatePage from '../../pages/States/AddStatePage';
-import States from '../../pages/States/States';
-import Services from '../../pages/Services/Services';
-import ServiceProviderPage from '../../pages/ServiceProviders/AddServiceProviderPage';
+
+import AddBlockPage from '../../pages/Block/AddBlockPage';
+import Blocks from '../../pages/Block/Blocks';
+
+import FlatsPage from '../../pages/Flats/FlatsPage';
 
 const Main = ({onUserLoad}) => {
     const [appLoadingState, updateAppLoading] = useState(false);
@@ -88,104 +76,24 @@ const Main = ({onUserLoad}) => {
                     <div className="pt-3" />
                     <section className="content">
                         <Switch>
-                            <Route exact path="/Adds" component={AddsPage} />
-
-                            <Route
-                                exact
-                                path="/slider"
-                                component={SliderPage}
-                            />
-
-                            <Route
-                                exact
-                                path="/notifications"
-                                component={NotificationsPage}
-                            />
-                            <Route
-                                exact
-                                path="/payments"
-                                component={PaymentsPage}
-                            />
-
-                            <Route exact path="/plans" component={PlansPage} />
-
-                            <Route
-                                exact
-                                path="/products"
-                                component={ProductsPage}
-                            />
-
-                            <Route
-                                exact
-                                path="/adminPage"
-                                component={AdminsPage}
-                            />
-
-                            <Route
-                                exact
-                                path="/categoriesPage"
-                                component={CategoryPage}
-                            />
-
                             <Route
                                 exact
                                 path="/changePassword"
                                 component={ChangePassword}
                             />
 
-                            <Route
-                                exact
-                                path="/AddProductPage"
-                                component={AddPrdouctPage}
-                            />
+                            <Route exact path="/blocks" component={Blocks} />
+                            <Route exact path="/flats" component={FlatsPage} />
 
                             <Route
                                 exact
-                                path="/AddSliderImage"
-                                component={AddSliderImage}
-                            />
-
-                            <Route
-                                exact
-                                path="/AddAdvertisement"
-                                component={AddAdvertisementImage}
-                            />
-
-                            <Route
-                                exact
-                                path="/AddCategoryPage"
-                                component={AddCategoryPage}
-                            />
-
-                            <Route exact path="/states" component={States} />
-                            <Route exact path="/cities" component={Cities} />
-                            <Route
-                                exact
-                                path="/services"
-                                component={Services}
+                                path="/AddBlock"
+                                component={AddBlockPage}
                             />
                             <Route
                                 exact
-                                path="/serviceProviders"
-                                component={ServiceProviderPage}
-                            />
-
-                            <Route
-                                exact
-                                path="/AddState"
-                                component={AddStatePage}
-                            />
-
-                            <Route
-                                exact
-                                path="/AddCity"
-                                component={AddCitiesPage}
-                            />
-
-                            <Route
-                                exact
-                                path="/AddService"
-                                component={AddServicePage}
+                                path="/AddFlat"
+                                component={AddFlatsPage}
                             />
 
                             <Route exact path="/profile" component={Profile} />

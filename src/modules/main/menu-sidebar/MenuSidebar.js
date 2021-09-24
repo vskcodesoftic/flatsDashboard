@@ -23,7 +23,7 @@ const MenuSidebar = ({user}) => {
                     style={{opacity: '.8'}}
                 /> */}
                 <span className="brand-text items-center font-weight-light ml-4">
-                    Janpad
+                    FlatsIndia
                 </span>
             </Link>
             <div className="sidebar">
@@ -57,43 +57,18 @@ const MenuSidebar = ({user}) => {
                         </li>
 
                         <li className="nav-item">
-                            <NavLink to="/states" exact className="nav-link">
+                            <NavLink to="/blocks" exact className="nav-link">
                                 <i className="nav-icon fas fa-users" />
-                                <p>States</p>
+                                <p>Blocks</p>
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/cities" exact className="nav-link">
+                            <NavLink to="/flats" exact className="nav-link">
                                 <i className="nav-icon fas fa-user-shield" />
-                                <p>Cities</p>
+                                <p>Flats</p>
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/services" exact className="nav-link">
-                                <i className="nav-icon fas fa-cart-plus" />
-                                <p>Services</p>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                to="/serviceProviders"
-                                exact
-                                className="nav-link"
-                            >
-                                <i className="nav-icon fas fa-chart-line" />
-                                <p>Service Providers</p>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                to="/slider"
-                                exact
-                                className="nav-link"
-                            >
-                                <i className="nav-icon fas fa-image" />
-                                <p>Slider</p>
-                            </NavLink>
-                        </li>
+
                     </ul>
                 </nav>
             </div>
